@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumDemo", "SeleniumDemo\SeleniumDemo.csproj", "{CA7B0AEB-E20B-4148-A3DE-2FE5D46E68B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F182CD04-641B-492B-A31B-C20FC8F41F41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumWPF", "SeleniumWPF\SeleniumWPF.csproj", "{53BC823D-0256-4551-8F35-5555CB1AC5B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA7B0AEB-E20B-4148-A3DE-2FE5D46E68B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA7B0AEB-E20B-4148-A3DE-2FE5D46E68B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA7B0AEB-E20B-4148-A3DE-2FE5D46E68B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA7B0AEB-E20B-4148-A3DE-2FE5D46E68B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F182CD04-641B-492B-A31B-C20FC8F41F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F182CD04-641B-492B-A31B-C20FC8F41F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F182CD04-641B-492B-A31B-C20FC8F41F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F182CD04-641B-492B-A31B-C20FC8F41F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53BC823D-0256-4551-8F35-5555CB1AC5B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BC823D-0256-4551-8F35-5555CB1AC5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BC823D-0256-4551-8F35-5555CB1AC5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BC823D-0256-4551-8F35-5555CB1AC5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E232D44C-1F4C-4485-8C14-8F118A3DCAD1}
+	EndGlobalSection
+EndGlobal

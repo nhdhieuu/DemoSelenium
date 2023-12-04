@@ -1,0 +1,16 @@
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\selenium-manager\linux\selenium-manager
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\selenium-manager\macos\selenium-manager
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\selenium-manager\windows\selenium-manager.exe
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\Test.exe
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\Test.pdb
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\Newtonsoft.Json.dll
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\System.Drawing.Common.dll
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\WebDriver.dll
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\Newtonsoft.Json.xml
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\System.Drawing.Common.xml
+D:\UIT\C#\SeleniumDemo\Test\bin\Debug\WebDriver.xml
+D:\UIT\C#\SeleniumDemo\Test\obj\Debug\Test.csproj.AssemblyReference.cache
+D:\UIT\C#\SeleniumDemo\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+D:\UIT\C#\SeleniumDemo\Test\obj\Debug\Test.csproj.CopyComplete
+D:\UIT\C#\SeleniumDemo\Test\obj\Debug\Test.exe
+D:\UIT\C#\SeleniumDemo\Test\obj\Debug\Test.pdb
