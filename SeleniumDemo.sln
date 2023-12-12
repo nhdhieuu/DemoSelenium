@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumWPF", "SeleniumWPF\SeleniumWPF.csproj", "{53BC823D-0256-4551-8F35-5555CB1AC5B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test02", "test02\test02.csproj", "{4857E280-4B49-423A-93E5-CBE10C6BB6DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{53BC823D-0256-4551-8F35-5555CB1AC5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53BC823D-0256-4551-8F35-5555CB1AC5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53BC823D-0256-4551-8F35-5555CB1AC5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4857E280-4B49-423A-93E5-CBE10C6BB6DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4857E280-4B49-423A-93E5-CBE10C6BB6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4857E280-4B49-423A-93E5-CBE10C6BB6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4857E280-4B49-423A-93E5-CBE10C6BB6DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
