@@ -1,15 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using OpenQA.Selenium;
+using System.Drawing.Printing;
+using System.Text;
+using System.Windows.Controls;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
+using PrintDocument = System.Drawing.Printing.PrintDocument;
 
 namespace SeleniumWPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /// </summary>  
     public partial class MainWindow
     {
         public MainWindow()
@@ -17,82 +26,129 @@ namespace SeleniumWPF
             InitializeComponent();
         }
 
-        // private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        // {
-        //     var driver = new ChromeDriver();
-        //     
-        //     //chuyển tới trang
-        //     driver.Navigate().GoToUrl("https://www.instagram.com/p/C0b1CXVPA_s/");
-        //     Thread.Sleep(TimeSpan.FromSeconds(5));
-        //     driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/nav/div[2]/div/div/div[2]/div/div/div/div[1]/a")).Click();
-        //     Thread.Sleep(TimeSpan.FromSeconds(2));
-        //     
-        //     //Điền username và password
-        //     driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/main/div/div/div[1]/div[2]/form/div/div[1]/div/label/input")).SendKeys("duylam1412");
-        //     Thread.Sleep(TimeSpan.FromSeconds(2));
-        //     driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/main/div/div/div[1]/div[2]/form/div/div[2]/div/label/input")).SendKeys("duyhieu123");
-        //     Thread.Sleep(TimeSpan.FromSeconds(2));
-        //     
-        //     //Đăng nhập
-        //     driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/main/div/div/div[1]/div[2]/form/div/div[3]/button")).Click();
-        //     Thread.Sleep(TimeSpan.FromSeconds(10));
-        //     
-        //     
-        //     //Bỏ qua thông báo
-        //     driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div/div/div/div")).Click();
-        //     Thread.Sleep(TimeSpan.FromSeconds(2));
-        //     // driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div/div/div[2]/div/div[4]/section/div/form/div/textarea")).SendKeys((UsernameBox.Text));
-        //     
-        //     //Điền cmt vào ô
-        //     IWebElement textarea = driver.FindElement(By.TagName("textarea"));
-        //     textarea.Click();
-        //     textarea = driver.FindElement(By.TagName("textarea"));
-        //     textarea.SendKeys("sadasd");
-        //     
-        //     //Gửi cmt
-        //     driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div/div/div[2]/div/div[4]/section/div/form/div/div[2]/div")).Click();
-        //    
-        //     
-        //
-        // }
+        private PrintText printText;
+        private PrintDocument printDocument = new PrintDocument();
+        private PrintDialog printDialog = new PrintDialog();
+
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var driver = new ChromeDriver();
+            var doc = new PrintDocument();
+            doc.PrintPage += new PrintPageEventHandler(PrintPageHandler);
+            doc.Print();
+        }
 
-            //chuyển tới trang
-            driver.Navigate().GoToUrl("https://www.instagram.com/");
-            Thread.Sleep(TimeSpan.FromSeconds(3));
 
-            //Điền username và password
-            driver.FindElement(By.XPath(
-                    "/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[1]/div/label/input"))
-                .SendKeys("duylam1412");
-            driver.FindElement(By.XPath(
-                    "/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[2]/div/label/input"))
-                .SendKeys("duyhieu123");
-            Thread.Sleep(TimeSpan.FromSeconds(2));
+        public void PrintPageHandler(object sender, PrintPageEventArgs e)
+        {
+            const int FIRST_COL_PAD = 20;
+            const int SECOND_COL_PAD = 7;
+            const int THIRD_COL_PAD = 20;
 
-            //Đăng nhập
-            driver.FindElement(By.XPath(
-                    "/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[3]/button/div")).Click();
-            Thread.Sleep(TimeSpan.FromSeconds(10));
-
-            driver.Navigate().GoToUrl("https://www.instagram.com/explore/");
-            Thread.Sleep(TimeSpan.FromSeconds(3));
-
-            ScrollTo(100,100, driver);
-            Thread.Sleep(TimeSpan.FromSeconds(3));
+            var sb = new StringBuilder();
+            sb.AppendLine("Start of receipt");
+            sb.AppendLine("================");
+            ReceiptItem item = new ReceiptItem
+            {
+                Name = "Item 1",
+                Cost = 1.99m,
+                Amount = 1,
+                Discount = 0
+            };
             
-            driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div[6]/div[2]/div/a/div/div[2]")).Click();
-            
+            sb.Append(item.Name.PadRight(FIRST_COL_PAD));
+
+            var breakDown = item.Amount > 0 ? item.Amount + "x" + item.Cost : string.Empty;
+            sb.Append(breakDown.PadRight(SECOND_COL_PAD));
+
+            sb.AppendLine(string.Format("{0:0.00} A", item.Total).PadLeft(THIRD_COL_PAD));
+
+            if (item.Discount > 0)
+            {
+                sb.Append(string.Format("DISCOUNT {0:D2}%", item.Discount)
+                    .PadRight(FIRST_COL_PAD + SECOND_COL_PAD));
+                sb.Append(string.Format("{0:0.00} A", -(item.Total / 100 * item.Discount)).PadLeft(THIRD_COL_PAD));
+                sb.AppendLine();
                 
+            }
+
+            sb.AppendLine("================");
+            var printText = new PrintText(sb.ToString(), new Font("Monospace Please...", 20));
+
+            Graphics g = e.Graphics;
+            RectangleF pageRectangle = e.PageSettings.PrintableArea; 
+            SizeF pageSize = pageRectangle.Size;
+
+            float layoutWidth = pageSize.Width;
+            float layoutHeight = 0f;
+
+            var layoutArea = new SizeF(layoutWidth, layoutHeight);
+
+            // Đo kích thước chuỗi cần in
+            SizeF stringSize = g.MeasureString(printText.Text, printText.Font, layoutArea, printText.StringFormat);
+
+            // Tính toán vị trí giữa trang
+            float centerX = (pageSize.Width - stringSize.Width) / 2;
+            float centerY = (pageSize.Height - stringSize.Height) / 2 - 100;
+
+            // Vẽ chuỗi ở giữa trang
+            RectangleF rectf = new RectangleF(centerX, centerY, stringSize.Width, stringSize.Height);
+            g.DrawString(printText.Text, printText.Font, Brushes.Black, rectf, printText.StringFormat);
 
         }
 
-        public void ScrollTo(int xPosition, int yPosition, ChromeDriver driver)
+        public void ProvideContent(object sender, PrintPageEventArgs e)
         {
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight)");
+            Graphics graphics = e.Graphics;
+            Font font = new Font("Courier New", 10);
+
+            float fontHeight = font.GetHeight();
+
+            int startX = 0;
+            int startY = 0;
+            int Offset = 20;
+
+
+            PaperSize paperSize = new PaperSize("Custom", 50, 100);
+
+            e.PageSettings.PaperSize = paperSize;
+            graphics.DrawString("Welcome to MSST", new Font("Courier New", 8),
+                new SolidBrush(Color.Black), startX, startY + Offset);
+            Offset = Offset + 20;
+
+            graphics.DrawString("Ticket No:" + "4525554654545",
+                new Font("Courier New", 14),
+                new SolidBrush(Color.Black), startX, startY + Offset);
+            Offset = Offset + 20;
+
+
+            graphics.DrawString("Ticket Date :" + "21/12/215",
+                new Font("Courier New", 14),
+                new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            String underLine = "------------------------------------------";
+
+            graphics.DrawString(underLine, new Font("Courier New", 14),
+                new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            String Grosstotal = "Total Amount to Pay = " + "2566";
+
+            Offset = Offset + 20;
+            underLine = "------------------------------------------";
+            graphics.DrawString(underLine, new Font("Courier New", 14),
+                new SolidBrush(Color.Black), startX, startY + Offset);
+            Offset = Offset + 20;
+
+            graphics.DrawString(Grosstotal, new Font("Courier New", 14),
+                new SolidBrush(Color.Black), startX, startY + Offset);
+        }
+
+
+        private void ButtonBase1_OnClick(object sender, RoutedEventArgs e)
+        {
+            PrintJob printJob = new PrintJob();
+            printJob.Print();
         }
     }
 }

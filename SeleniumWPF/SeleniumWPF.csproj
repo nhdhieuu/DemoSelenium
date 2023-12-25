@@ -35,6 +35,9 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="DevOne.Security.Cryptography.BCrypt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\BCrypt.1.0.0.0\lib\DevOne.Security.Cryptography.BCrypt.dll</HintPath>
+        </Reference>
         <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
           <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
         </Reference>
@@ -69,12 +72,16 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Compile Include="Hashing.cs" />
         <Compile Include="MainWindow.xaml.cs">
             <DependentUpon>MainWindow.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Order.cs" />
+        <Compile Include="PrintJob.cs" />
+        <Compile Include="PrintText.cs" />
         <Compile Include="Properties\AssemblyInfo.cs">
             <SubType>Code</SubType>
         </Compile>

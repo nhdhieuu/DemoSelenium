@@ -24,16 +24,7 @@ namespace SeleniumDemo
     {
         public MainWindow()
         {
-            InitializeComponent();
-            try
-            {
-                SeleniumBucakCho seleniumBucakCho = new SeleniumBucakCho();
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

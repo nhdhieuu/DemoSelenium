@@ -4,6 +4,7 @@ D:\UIT\C#\SeleniumDemo\SeleniumWPF\bin\Debug\selenium-manager\windows\selenium-m
 D:\UIT\C#\SeleniumDemo\SeleniumWPF\bin\Debug\SeleniumWPF.exe.config
 D:\UIT\C#\SeleniumDemo\SeleniumWPF\bin\Debug\SeleniumWPF.exe
 D:\UIT\C#\SeleniumDemo\SeleniumWPF\bin\Debug\SeleniumWPF.pdb
+D:\UIT\C#\SeleniumDemo\SeleniumWPF\bin\Debug\DevOne.Security.Cryptography.BCrypt.dll
 D:\UIT\C#\SeleniumDemo\SeleniumWPF\bin\Debug\Newtonsoft.Json.dll
 D:\UIT\C#\SeleniumDemo\SeleniumWPF\bin\Debug\System.Drawing.Common.dll
 D:\UIT\C#\SeleniumDemo\SeleniumWPF\bin\Debug\WebDriver.dll
